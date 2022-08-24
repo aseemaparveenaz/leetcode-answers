@@ -18,10 +18,12 @@ Input: n = 1
 Output: true */
 
 class Solution {
-    /* 1) (num&(num-1))==0  to check the number is 2 power k ex:16 2 power 4
+    /* 1st approach--------------
+    1) (num&(num-1))==0  to check the number is 2 power k ex:16 2 power 4
     2&2-1 is 0 while we do in bits
      2) 1,4, 16 are %3==1 so both condition should satisfy*/
     public boolean isPowerOfFour(int num) {
+     /*1st spprach
      if(num>0)
      {
         if((num&(num-1))==0 && (num%3==1))
@@ -30,6 +32,21 @@ class Solution {
              return false;
      }
     else
+        return false;*/
+        
+     //2nd apprach------------------
+     // 16/4----4/4--1 until it comes 1 divide if one comes true else not
+     if(num>0){
+        while(num>=4)
+        {
+             if(num%4!=0)
+                return false;
+             num=num/4;
+        }
+         return num==1?true:false;
+        }
         return false;
+     
+     
     }
 }
